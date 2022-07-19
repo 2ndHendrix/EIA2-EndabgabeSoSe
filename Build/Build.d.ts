@@ -109,14 +109,6 @@ declare namespace Garden {
     }
 }
 declare namespace Garden {
-    abstract class Moveable {
-        private private;
-        protected: any;
-        protected constructor();
-        abstract update(): void;
-    }
-}
-declare namespace Garden {
     let bugPaths: Path2D[];
     let ufoPath: Path2D;
     let shapeBugs: number[][][];

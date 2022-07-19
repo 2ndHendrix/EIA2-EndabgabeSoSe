@@ -49,7 +49,7 @@ namespace Garden {
 
         update(): void {
             this.growthratenow--;
-            console.log(this.growthratenow);
+            //console.log(this.growthratenow);
             if (this.growthratenow >= 0) {
                 this.growthratenow = this.growthrate;
                 this.growlevel++;
@@ -80,7 +80,7 @@ namespace Garden {
         } 
 
         updateUI(): void {
-            console.log("test");
+            //console.log("test");
 
             this.waterlevel.innerHTML = (this.nowWater / 50).toString();
             //this.pestlevel.innerHTML = this.nowPesticides.toString();

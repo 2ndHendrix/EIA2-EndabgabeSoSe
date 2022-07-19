@@ -279,22 +279,24 @@ var Garden;
                 this.field[i].update();
             }
             if (this.field[this.lastfield].status == Garden.STATUS.GROW) {
-                this.checkbug();
                 this.field[this.lastfield].plant.updateUI();
             }
             else {
                 this.field[this.lastfield].nothingplanted();
             }
-            this.bug[0].update();
             //console.log(this.lastfield);
-            if (this.field[this.lastfield].status == Garden.STATUS.FULL) {
-                this.checkbug();
-            }
+            this.bug[0].update();
+            this.checkbug();
+            //console.log(this.bug[0].position);
         }
         checkbug() {
             for (let i = 0; i < this.field.length; i++) {
                 if (Garden.context.isPointInPath(this.field[i].hoverpath, this.bug[0].position.x, this.bug[0].position.y)) {
-                    this.bug[0] = new Garden.Farmbug();
+                    if ((this.field[i].status == Garden.STATUS.GROW) || (this.field[i].status == Garden.STATUS.FULL)) {
+                        this.bug[0].position.x = 0;
+                        this.field[i].fieldbug.push(new Garden.Fieldbug(2));
+                    }
+                    //this.bug[0] = new Farmbug();
                 }
             }
         }
@@ -486,7 +488,7 @@ var Garden;
         }
         update() {
             this.growthratenow--;
-            console.log(this.growthratenow);
+            //console.log(this.growthratenow);
             if (this.growthratenow >= 0) {
                 this.growthratenow = this.growthrate;
                 this.growlevel++;
@@ -511,7 +513,7 @@ var Garden;
             Garden.context.drawImage(this.image, this.position.x + 110, this.position.y + 100);
         }
         updateUI() {
-            console.log("test");
+            //console.log("test");
             this.waterlevel.innerHTML = (this.nowWater / 50).toString();
             //this.pestlevel.innerHTML = this.nowPesticides.toString();
             this.fertilizerlevel.innerHTML = (this.nowFertilizer / 50).toString();
@@ -548,7 +550,7 @@ var Garden;
         }
         update() {
             this.position.x += 9;
-            Garden.context.drawImage(this.image, this.position.x, this.position.y);
+            Garden.context.drawImage(this.image, this.position.x - 64, this.position.y - 64);
             if (this.position.x >= 1650) {
                 this.position.x = -50;
                 this.position.y = Math.random() * 960;
@@ -569,16 +571,6 @@ var Garden;
         }
     }
     Garden.Fieldbug = Fieldbug;
-})(Garden || (Garden = {}));
-var Garden;
-(function (Garden) {
-    class Moveable {
-        private;
-        protected;
-        constructor() {
-        }
-    }
-    Garden.Moveable = Moveable;
 })(Garden || (Garden = {}));
 var Garden;
 (function (Garden) {

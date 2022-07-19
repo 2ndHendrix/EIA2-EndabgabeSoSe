@@ -85,7 +85,6 @@ namespace Garden {
 
          }
          if (this.field[this.lastfield].status == STATUS.GROW) {
-            this.checkbug();
             this.field[this.lastfield].plant.updateUI();
 
 
@@ -93,35 +92,38 @@ namespace Garden {
          else {
             this.field[this.lastfield].nothingplanted();
          }
-         this.bug[0].update();
+
 
          //console.log(this.lastfield);
-         if (this.field[this.lastfield].status == STATUS.FULL) {
-            this.checkbug();
 
-
-         }
+         this.bug[0].update();
+         this.checkbug();
+         //console.log(this.bug[0].position);
       }
       checkbug(): void {
          for (let i: number = 0; i < this.field.length; i++) {
-         if (context.isPointInPath(this.field[i].hoverpath, this.bug[0].position.x, this.bug[0].position.y)) {
-            this.bug[0] = new Farmbug();
+            if (context.isPointInPath(this.field[i].hoverpath, this.bug[0].position.x, this.bug[0].position.y)) {
+               if ((this.field[i].status == STATUS.GROW) || (this.field[i].status == STATUS.FULL)) {
+                  this.bug[0].position.x = 0;
+                  this.field[i].fieldbug.push(new Fieldbug(2));
+               }
+               //this.bug[0] = new Farmbug();
 
-         }
+            }
          }
       }
 
 
 
-         fertilize(): void {
-            // console.log("1Farm fertilize");
-         }
+      fertilize(): void {
+         // console.log("1Farm fertilize");
+      }
 
-         pesticide(): void {
-            // console.log("1Farm pesticide");
-         }
-         getpath(_number: number): Path2D {
-            return this.field[_number].fieldpath;
-         }
+      pesticide(): void {
+         // console.log("1Farm pesticide");
+      }
+      getpath(_number: number): Path2D {
+         return this.field[_number].fieldpath;
       }
    }
+}

@@ -18,7 +18,7 @@ namespace Garden {
 
             this.position.x += 9;  
 
-            context.drawImage(this.image, this.position.x, this.position.y) ;                                 
+            context.drawImage(this.image, this.position.x - 64, this.position.y - 64) ;                                 
                     
             if (this.position.x >= 1650) {                    
                 this.position.x = -50;  
