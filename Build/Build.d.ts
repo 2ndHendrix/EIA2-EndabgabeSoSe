@@ -19,6 +19,7 @@ declare namespace Garden {
         target: Vector;
         condition: string;
         tool: TOOL;
+        bug: Farmbug[];
         field: Field[];
         path: Path2D;
         private i;
@@ -27,6 +28,7 @@ declare namespace Garden {
         build(): void;
         water(): void;
         update(_fundsvalue: number, _sellprice: number): void;
+        checkbug(): void;
         fertilize(): void;
         pesticide(): void;
         getpath(_number: number): Path2D;
@@ -89,14 +91,19 @@ declare namespace Garden {
     }
 }
 declare namespace Garden {
-    class Farmbug extends Moveable {
+    class Farmbug {
         size: number;
-        constructor(_bugposition: Vector);
+        position: Vector;
+        image: HTMLImageElement;
+        number: number;
+        constructor();
         update(): void;
     }
 }
 declare namespace Garden {
-    class Fieldbug extends Moveable {
+    class Fieldbug {
+        position: Vector;
+        image: HTMLImageElement;
         constructor(min: number, max: number);
         update(): void;
     }

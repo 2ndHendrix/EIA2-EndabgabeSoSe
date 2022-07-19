@@ -80,7 +80,7 @@ namespace Garden {
         } 
 
         updateUI(): void {
-            //console.log("test");
+            console.log("test");
 
             this.waterlevel.innerHTML = (this.nowWater / 50).toString();
             //this.pestlevel.innerHTML = this.nowPesticides.toString();

@@ -1,14 +1,17 @@
 namespace Garden {
 
 
-    export class Fieldbug extends Moveable {
-
-        
+    export class Fieldbug {
 
 
 
-        public constructor(min: number, max: number) {
-        super(min, max);
+
+        position: Vector = new Vector(0, 0);
+        image: HTMLImageElement = new Image();
+
+
+        constructor(min: number, max: number) {
+            this.image.src =  "icons/bug.png";
 
         }
         update(): void {

@@ -5,6 +5,7 @@ namespace Garden {
       public target: Vector;
       public condition: string;
       public tool: TOOL;
+      public bug: Farmbug[] = [];
       public field: Field[] = [];
       public path: Path2D = new Path2D();
       private i: number = 0;
@@ -15,6 +16,10 @@ namespace Garden {
 
       constructor() {
          this.build();
+         for (let i: number = 0; i < 1; i++) {
+            this.bug.push(new Farmbug());
+         }
+
          //console.log(this.field.length);
       }
 
@@ -54,6 +59,7 @@ namespace Garden {
 
 
          for (let i: number = 0; i < this.field.length; i++) {
+
             if (this.field[i].readysell == true) {          //sell item
                _fundsvalue += _sellprice;
                document.querySelector("#funds").innerHTML = _fundsvalue.toString() + "";
@@ -79,30 +85,43 @@ namespace Garden {
 
          }
          if (this.field[this.lastfield].status == STATUS.GROW) {
+            this.checkbug();
             this.field[this.lastfield].plant.updateUI();
+
 
          }
          else {
             this.field[this.lastfield].nothingplanted();
          }
+         this.bug[0].update();
 
          //console.log(this.lastfield);
+         if (this.field[this.lastfield].status == STATUS.FULL) {
+            this.checkbug();
 
+
+         }
+      }
+      checkbug(): void {
+         for (let i: number = 0; i < this.field.length; i++) {
+         if (context.isPointInPath(this.field[i].hoverpath, this.bug[0].position.x, this.bug[0].position.y)) {
+            this.bug[0] = new Farmbug();
+
+         }
+         }
       }
 
 
 
+         fertilize(): void {
+            // console.log("1Farm fertilize");
+         }
 
-
-      fertilize(): void {
-         // console.log("1Farm fertilize");
-      }
-
-      pesticide(): void {
-         // console.log("1Farm pesticide");
-      }
-      getpath(_number: number): Path2D {
-         return this.field[_number].fieldpath;
+         pesticide(): void {
+            // console.log("1Farm pesticide");
+         }
+         getpath(_number: number): Path2D {
+            return this.field[_number].fieldpath;
+         }
       }
    }
-}

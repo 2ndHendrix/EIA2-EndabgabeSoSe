@@ -223,12 +223,16 @@ var Garden;
         target;
         condition;
         tool;
+        bug = [];
         field = [];
         path = new Path2D();
         i = 0;
         //private hover: boolean;
         constructor() {
             this.build();
+            for (let i = 0; i < 1; i++) {
+                this.bug.push(new Garden.Farmbug());
+            }
             //console.log(this.field.length);
         }
         plant(_tool) {
@@ -275,12 +279,24 @@ var Garden;
                 this.field[i].update();
             }
             if (this.field[this.lastfield].status == Garden.STATUS.GROW) {
+                this.checkbug();
                 this.field[this.lastfield].plant.updateUI();
             }
             else {
                 this.field[this.lastfield].nothingplanted();
             }
+            this.bug[0].update();
             //console.log(this.lastfield);
+            if (this.field[this.lastfield].status == Garden.STATUS.FULL) {
+                this.checkbug();
+            }
+        }
+        checkbug() {
+            for (let i = 0; i < this.field.length; i++) {
+                if (Garden.context.isPointInPath(this.field[i].hoverpath, this.bug[0].position.x, this.bug[0].position.y)) {
+                    this.bug[0] = new Garden.Farmbug();
+                }
+            }
         }
         fertilize() {
             // console.log("1Farm fertilize");
@@ -495,7 +511,7 @@ var Garden;
             Garden.context.drawImage(this.image, this.position.x + 110, this.position.y + 100);
         }
         updateUI() {
-            //console.log("test");
+            console.log("test");
             this.waterlevel.innerHTML = (this.nowWater / 50).toString();
             //this.pestlevel.innerHTML = this.nowPesticides.toString();
             this.fertilizerlevel.innerHTML = (this.nowFertilizer / 50).toString();
@@ -521,16 +537,21 @@ var Garden;
 })(Garden || (Garden = {}));
 var Garden;
 (function (Garden) {
-    class Farmbug extends Garden.Moveable {
+    class Farmbug {
         size;
-        constructor(_bugposition) {
-            super();
+        position;
+        image = new Image();
+        number;
+        constructor() {
+            this.image.src = "icons/bug.png";
+            this.position = new Garden.Vector(Math.random() * 1080, Math.random() * 1080);
         }
         update() {
-            this.position.x += 3;
+            this.position.x += 9;
+            Garden.context.drawImage(this.image, this.position.x, this.position.y);
             if (this.position.x >= 1650) {
-                this.position.x = -10;
-                this.position.y = Math.random() * 1080;
+                this.position.x = -50;
+                this.position.y = Math.random() * 960;
             }
         }
     }
@@ -538,9 +559,11 @@ var Garden;
 })(Garden || (Garden = {}));
 var Garden;
 (function (Garden) {
-    class Fieldbug extends Garden.Moveable {
+    class Fieldbug {
+        position = new Garden.Vector(0, 0);
+        image = new Image();
         constructor(min, max) {
-            super(min, max);
+            this.image.src = "icons/bug.png";
         }
         update() {
         }
