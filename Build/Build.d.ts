@@ -45,6 +45,7 @@ declare namespace Garden {
         hoverpath: Path2D;
         position: Vector;
         status: STATUS;
+        fieldbug: Fieldbug[];
         plant: Plant;
         fieldnumber: number;
         readysell: boolean;
@@ -104,7 +105,8 @@ declare namespace Garden {
     class Fieldbug {
         position: Vector;
         image: HTMLImageElement;
-        constructor(min: number, max: number);
+        number: number;
+        constructor(_number: number);
         update(): void;
     }
 }

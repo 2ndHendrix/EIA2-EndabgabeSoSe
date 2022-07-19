@@ -13,10 +13,12 @@ namespace Garden {
 
         position: Vector;
         public status: STATUS;
+        public fieldbug: Fieldbug [] = [];
         plant: Plant;
         public fieldnumber: number;
         public readysell: boolean = false;
         private hover: boolean;
+        
 
 
 
@@ -83,6 +85,7 @@ namespace Garden {
                 this.plant.grownready();
                 break;
             }
+
 
         }
         selected(): void {
@@ -154,7 +157,7 @@ namespace Garden {
                 case STATUS.FULL:
                     if (_tool == TOOL.HARVEST) {
                         this.readysell = true;
-                        
+
                     }
                 //click(_tool)
             }

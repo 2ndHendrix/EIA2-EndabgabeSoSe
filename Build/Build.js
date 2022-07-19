@@ -325,6 +325,7 @@ var Garden;
         hoverpath = new Path2D();
         position;
         status;
+        fieldbug = [];
         plant;
         fieldnumber;
         readysell = false;
@@ -564,10 +565,21 @@ var Garden;
     class Fieldbug {
         position = new Garden.Vector(0, 0);
         image = new Image();
-        constructor(min, max) {
-            this.image.src = "icons/bug.png";
+        number;
+        constructor(_number) {
+            this.number = _number;
+            this.image.src = "icons/smallbug.png";
         }
         update() {
+            if (this.number >= 1) {
+                Garden.context.drawImage(this.image, this.position.x + 50, this.position.y + 100);
+                if (this.number >= 2) {
+                    Garden.context.drawImage(this.image, this.position.x + 80, this.position.y + 50);
+                    if (this.number >= 3) {
+                        Garden.context.drawImage(this.image, this.position.x + 110, this.position.y + 100);
+                    }
+                }
+            }
         }
     }
     Garden.Fieldbug = Fieldbug;
