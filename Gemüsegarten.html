@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemüsegarten-Simulator</title>
+
+    <!--<script src="Classes/Vector.js"></script>
+    <script src="Classes/Paths.js"></script>
+    <script src="Classes/Moveable.js"></script>
+    <script src="Classes/5Bugs.js"></script>
+
+    <script src="Classes/1Farm.js"></script>
+    <script src="Classes/2Field.js"></script>
+    <script src="Classes/3Plants.js"></script>
+    <script src="Classes/4Consumables.js"></script>
+
+    <script src="Consumables/C1water.js"></script>
+    <script src="Consumables/C2fertilizer.js"></script>
+    <script src="Consumables/C3pesticides.js"></script>
+
+    <script src="Plants/P1Broccoli.js"></script>
+    <script src="Plants/P2Cabbage.js"></script>
+    <script src="Plants/P3Carrot.js"></script>
+    <script src="Plants/P4Corn.js"></script>
+    <script src="Plants/P5Spinach.js"></script>
+
+    <script src="main.js"></script>-->
+    <script src="Build/Build.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Garden Simulator</h1>
+
+    <div id="startGameMenu">
+        <!--Closes when "Start Simulation" button is clicked-->
+        <form id="startGameForm">
+            <button type="submit" id="startSimulationButton" name="startSimulationButton">Start Simulation</button>
+
+            <h2 id="fundsatstart">Funds at Start</h2>
+            <input type="number" id="fundsAtStart" name="Funds" value="500" min="500" max="2500" step="50">
+
+            <h2 id="pricerange">Price range of consumalbles</h2>
+            <input type="number" id="priceRangeLow" value="5" min="5" max="20" step="5">
+            <input type="number" id="priceRangeHigh" value="25" min="25" max="75" step="5">
+
+        </form>
+    </div>
+
+
+    <div id="main">
+        <!--Opens when "Start Simulation" button is clicked-->
+
+        <canvas height="1080" width="1600" id="canvas"></canvas>
+
+        <!--Rows with fields inside-->
+        <!--<div class="row" id="row0"></div>
+        <div class="row" id="row1"></div>
+        <div class="row" id="row2"></div>
+        <div class="row" id="row3"></div>
+        <div class="row" id="row4"></div>-->
+
+        <!--Menu that shows the changing prices of Consumables, Harvest and the players funds-->
+        <div id="financeMenu">
+            <div class="images">
+                <img id="plantIMG" src="icons/growth.png" height="35" width="35">
+                <p id="pricePlant"></p>
+            </div>
+            <div class="images">
+                <img id="pesticidesIMG" src="icons/skull.png" height="35" width="35">
+                <p id="pricePesticides"></p>
+            </div>
+
+            <div class="images">
+                <img id="plant" src="icons/fertilizer.png" height="35" width="35">
+                <p id="priceFertilizer"></p>
+            </div>
+
+            <div class="images">
+                <img id="plant" src="icons/save-money.png" height="35" width="35">
+                <p id="harvestWorth"></p>
+            </div>
+
+            <div class="images">
+                <img id="dollar" src="icons/dollar.png" height="35" width="35">
+                <p type="number" id="funds"></p>
+            </div>
+        </div>
+
+        <canvas></canvas>
+
+        <div id="mainMenu">
+            <!--Menu for planting, harbesting, buying items-->
+            <div id="actionsMenu">
+                <h3>Plant</h3>
+                <button type="button" class="item" id="broccoli"></button>
+                <button type="button" class="item" id="cabbage"></button>
+                <button type="button" class="item" id="corn"></button>
+                <button type="button" class="item" id="carrot"></button>
+                <button type="button" class="item" id="spinach"></button>
+            </div>
+
+            <div id="harvestMenu">corn
+                <h3>Harvest</h3>
+                <button type="button" class="item" id="harvest"></button>
+
+            </div>
+
+            <div id="toolsMenu">
+                <h3>Tools</h3>
+                <form id="toolsMenuForm">
+
+                    <div id="pesticidesMenu">
+                        <label for="pesticidesMenu">Pesticides</label>
+                        <div id="pestlevel">+ 10</div>
+                            <button type="button" class="item" id="buttonPesticides"></button>
+                            <p type="number" id="amountPesticides"></p>
+                        
+                    </div>
+                    <div id="waterMenu">
+                        <label for="waterMenu">Water</label>
+                        <div id="waterlevel"> + 10</div>
+                            <button type="button" class="item" id="buttonWater"></button>
+                            <p id="amountWater"></p>
+                        
+                    </div>
+                    <div id="fertilizeMenu">
+                        <label for="fertilizeMenu">Fertilizer</label>
+                        <div id="fertilizelevel"> + 10</div>
+                            <button type="button" class="item" id="buttonFertilizer"></button>
+                            <p id="amountFertilizer"></p>
+                        
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

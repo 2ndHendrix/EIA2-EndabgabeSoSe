@@ -1,0 +1,317 @@
+body {
+    margin-top: -50px;
+    margin-left: 0px;
+    padding: 0;
+    height: 1005;
+    width: 100%;
+}
+
+
+#main {
+    min-height: 100%;
+}
+
+h1 {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+p {
+    position: relative;
+    top: -48px;
+    left: 50px;
+    font-size: large;
+}
+
+.farm {
+    position: absolute;
+    background-color: lightblue;
+    top: 111px;
+    width: 100%;
+    height: 85%
+}
+
+.row {
+    position: relative;
+    left: 100px;
+    top: -500px;
+    width: 75%;
+    height: 100px;
+    display: flex;
+    z-index: 800;
+    margin: 10px;
+
+}
+
+.field {
+    margin: 5px;
+    padding-right: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: #84843C;
+
+}
+
+#menuUI {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+div#financeMenu {
+    position: absolute;
+    width: 1000px;
+    height: 100px;
+    top: 30px;
+    left: 150px;
+    display: inline-block;
+}
+
+
+#mainMenu {
+    position: absolute;
+    background-color: gray;
+    top: 0px;
+    right: -30px;
+    height: 100%;
+    width: 25%;
+    padding-right: 10px;
+}
+
+#actionsMenu {
+    position: absolute;
+    top: 0px;
+    right: 50px;
+    height: 33%;
+    padding: 20px;
+}
+
+#harvestMenu {
+    position: absolute;
+    top: 30%;
+    right: 250px;
+}
+
+#toolsMenu {
+    position: absolute;
+    width: 80%;
+    top: 58%;
+    right: 0;
+}
+
+label {
+    padding-right: 20px;
+}
+
+input {
+    position: relative;
+    float: right;
+    top: 25px;
+    right: 180px;
+    z-index: 999;
+}
+
+.images {
+    background: transparent;
+    float: right;
+    width: 13.33%;
+    margin-left: 30px;
+    padding: 5px;
+}
+
+img {
+    background: transparent;
+}
+
+button.item {
+    background: transparent;
+    border: none;
+    border: solid;
+    border-radius: 50px;
+    z-index: 998;
+}
+
+button.item:hover {
+    background: white;
+    border: none;
+    border: solid;
+    border-radius: 50px;
+    z-index: 997;
+}
+
+button:active {
+    background: black;
+    border: none;
+    border: solid;
+    border-radius: 50px;
+    z-index: 997;
+}
+
+button#submitPesticides {
+    position: relative;
+    left: 50px;
+    top: 12px;
+}
+
+button#submitWater {
+    position: relative;
+    left: 75px;
+    top: 10px;
+}
+
+button#submitFertilizer {
+    position: relative;
+    left: 55px;
+    top: 13px;
+}
+
+button#startSimulationButton {
+    position: absolute;
+    height: 50px;
+    width: 400px;
+    left: 30%;
+    top: 50%;
+    background-color: grey;
+    z-index: 903;
+}
+
+button#startSimulationButton:hover {
+    position: absolute;
+    height: 50px;
+    width: 400px;
+    left: 30%;
+    top: 50%;
+    background-color: black;
+    color: white;
+    z-index: 903;
+
+}
+
+input#fundsAtStart {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    width: 50px;
+    z-index: 902;
+}
+
+input#priceRangeLow {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    width: 50px;
+    z-index: 900;
+}
+
+input#priceRangeHigh {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    width: 50px;
+    z-index: 901;
+}
+
+#startGameMenu {
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+}
+
+h2#pricerange {
+    position: absolute;
+    left: 20%;
+    top: 61%;
+    z-index: 901;
+}
+
+h2#fundsatstart {
+    position: absolute;
+    left: 20%;
+    top: 57%;
+    z-index: 901;
+}
+
+
+
+#farm {
+    position: absolute;
+    height: 84.6%;
+    width: 82.2%;
+    background-color: none;
+    top: 100px;
+    z-index: 1;
+}
+
+
+#broccoli {
+    background: url(../EIA2-EndabgabeSoSe/icons/broccoli.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#cabbage {
+    background: url(../EIA2-EndabgabeSoSe/icons/cabbage.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#corn {
+    background: url(../EIA2-EndabgabeSoSe/icons/corn.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#carrot {
+    background: url(../EIA2-EndabgabeSoSe/icons/carrot.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#spinach {
+    background: url(../EIA2-EndabgabeSoSe/icons/spinach.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#harvest {
+    background: url(../EIA2-EndabgabeSoSe/icons/sickle.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#buttonPesticides {
+    background: url(../EIA2-EndabgabeSoSe/icons/skull.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#buttonWater {
+    background: url(../EIA2-EndabgabeSoSe/icons/water.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+#buttonFertilizer {
+    background: url(../EIA2-EndabgabeSoSe/icons/fertilizer.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
