@@ -89,28 +89,24 @@ declare namespace Garden {
     }
 }
 declare namespace Garden {
-    class Bugs extends Moveable {
+    class Farmbug extends Moveable {
         size: number;
-        private type;
-        constructor(_size: number, _bugposition?: Vector);
-        draw(): void;
+        constructor(_bugposition: Vector);
+        update(): void;
     }
 }
 declare namespace Garden {
-    class Bugs extends Moveable {
-        size: number;
-        private type;
-        constructor(_size: number, _bugposition?: Vector);
-        draw(): void;
+    class Fieldbug extends Moveable {
+        constructor(min: number, max: number);
+        update(): void;
     }
 }
 declare namespace Garden {
     abstract class Moveable {
-        position: Vector;
-        velocity: Vector;
-        protected constructor(_position?: Vector);
-        move(_timeslice: number): void;
-        abstract draw(): void;
+        private private;
+        protected: any;
+        protected constructor();
+        abstract update(): void;
     }
 }
 declare namespace Garden {

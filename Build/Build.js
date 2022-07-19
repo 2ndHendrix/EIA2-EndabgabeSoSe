@@ -257,7 +257,6 @@ var Garden;
         update(_fundsvalue, _sellprice) {
             for (let i = 0; i < this.field.length; i++) {
                 if (this.field[i].readysell == true) { //sell item
-                    console.log(_sellprice);
                     _fundsvalue += _sellprice;
                     document.querySelector("#funds").innerHTML = _fundsvalue.toString() + "";
                     this.field[i] = new Garden.Field(this.field[i].position, this.field[i].fieldnumber);
@@ -522,95 +521,38 @@ var Garden;
 })(Garden || (Garden = {}));
 var Garden;
 (function (Garden) {
-    class Bugs extends Garden.Moveable {
+    class Farmbug extends Garden.Moveable {
         size;
-        type;
-        constructor(_size, _bugposition) {
-            super(_bugposition);
-            this.velocity = Garden.Vector.getRandom(100, 200);
-            this.type = Math.floor(Math.random() * 4);
-            this.size = _size;
+        constructor(_bugposition) {
+            super();
         }
-        draw() {
-            Garden.context.save();
-            Garden.context.translate(this.position.x, this.position.y);
-            Garden.context.scale(this.size, this.size);
-            Garden.context.translate(-50, -50);
-            Garden.context.lineWidth = innerWidth / this.size;
-            Garden.context.stroke(Garden.bugPaths[this.type]);
-            Garden.context.restore();
-            // context.beginPath();
-            // context.fillStyle = "ffffff";
-            // context.arc(10, 30, 25, 0, 2 * Math.PI);
-            // context.closePath();
-            // context.fill();
+        update() {
+            this.position.x += 3;
+            if (this.position.x >= 1650) {
+                this.position.x = -10;
+                this.position.y = Math.random() * 1080;
+            }
         }
     }
-    Garden.Bugs = Bugs;
+    Garden.Farmbug = Farmbug;
 })(Garden || (Garden = {}));
 var Garden;
 (function (Garden) {
-    class Bugs extends Garden.Moveable {
-        size;
-        type;
-        constructor(_size, _bugposition) {
-            super(_bugposition);
-            this.velocity = Garden.Vector.getRandom(100, 200);
-            this.type = Math.floor(Math.random() * 4);
-            this.size = _size;
+    class Fieldbug extends Garden.Moveable {
+        constructor(min, max) {
+            super(min, max);
         }
-        draw() {
-            Garden.context.save();
-            Garden.context.translate(this.position.x, this.position.y);
-            Garden.context.scale(this.size, this.size);
-            Garden.context.translate(-50, -50);
-            Garden.context.lineWidth = innerWidth / this.size;
-            Garden.context.stroke(Garden.bugPaths[this.type]);
-            Garden.context.restore();
-            // context.beginPath();
-            // context.fillStyle = "ffffff";
-            // context.arc(10, 30, 25, 0, 2 * Math.PI);
-            // context.closePath();
-            // context.fill();
+        update() {
         }
     }
-    Garden.Bugs = Bugs;
+    Garden.Fieldbug = Fieldbug;
 })(Garden || (Garden = {}));
 var Garden;
 (function (Garden) {
     class Moveable {
-        position;
-        velocity;
-        //   public expendable: boolean = false;
-        //   protected hitRadius: number = 0;
-        constructor(_position) {
-            if (_position)
-                this.position = _position.copy();
-            else
-                this.position = new Garden.Vector();
-            this.velocity = new Garden.Vector();
-        }
-        //   public isHitBy(_partner: Moveable): boolean {
-        //     let difference: Vector = Vector.getDifference(this.position, _partner.position);
-        //     if (this.hitRadius + _partner.hitRadius < difference.length)
-        //       return false;
-        //     return true;
-        //   }
-        //   public hit(): void {
-        //     this.expendable = true;
-        //   }
-        move(_timeslice) {
-            let offset = this.velocity.copy();
-            offset.scale(_timeslice);
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += Garden.context.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += Garden.context.canvas.height;
-            if (this.position.x > Garden.context.canvas.width)
-                this.position.x -= Garden.context.canvas.width;
-            if (this.position.y > Garden.context.canvas.height)
-                this.position.y -= Garden.context.canvas.height;
+        private;
+        protected;
+        constructor() {
         }
     }
     Garden.Moveable = Moveable;
